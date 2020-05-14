@@ -72,9 +72,10 @@ class Account4:
   def balance(self):
     return self.__money
 
-  # name it as the @property
+  # name it as the @property function
   @balance.setter
   def balance(self, amount):
+    #additional protection
     if(amount > 0):
       self.__money = amount
     else:
