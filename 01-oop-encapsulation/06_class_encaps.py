@@ -1,3 +1,10 @@
+# Why OOP?
+
+# 1) Encapsulation
+  # By bundling the data together, you always know what is where
+  # By not allowing "free" access, your code is less prone to errors
+
+
 class Account:
   def __init__(self, starting_money):
     # attributes
@@ -47,12 +54,12 @@ class Account3:
 
 even_better_acc = Account3(5)
 # works as expected
-even_better_acc.withdraw(1)
+even_better_acc.set_new_balance(1)
 # raises custom exception 
-even_better_acc.withdraw(10)
+even_better_acc.set_new_balance(10)
 
 # raises exception
-even_better_acc.__money -= 10
+# even_better_acc.__money -= 10
 
 
 # i can use some fancy syntax to do this too!
@@ -65,10 +72,11 @@ class Account4:
   def balance(self):
     return self.__money
 
+  # name it as the @property
   @balance.setter
   def balance(self, amount):
     if(amount > 0):
-      self.money = amount
+      self.__money = amount
     else:
       raise Exception("Not enough money")
 
@@ -78,3 +86,8 @@ even_better_acc.balance -= 1
 # raises exception
 even_better_acc.balance -= 10
 
+# works as expected
+print(even_better_acc.balance)
+
+# raises as expected
+print(even_better_acc.__money)

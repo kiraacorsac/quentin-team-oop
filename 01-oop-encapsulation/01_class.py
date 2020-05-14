@@ -1,10 +1,3 @@
-# Why OOP?
-
-# 1) Encapsulation
-  # By bundling the data together, you always know what is where
-  # By not allowing "free" access, your code is less prone to errors
-
-
 class Doggo:
     pass
 
