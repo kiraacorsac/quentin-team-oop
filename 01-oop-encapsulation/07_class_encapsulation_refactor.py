@@ -38,4 +38,5 @@ jake = DoggoFix()
 jake.legs = -1 # a bug!
 print(jake.legs)
 
-jake.sound = meow
+jake.sound = "meow"
+print(jake.sound)
