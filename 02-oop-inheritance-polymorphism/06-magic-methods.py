@@ -13,4 +13,5 @@ class Fractional:
 half = Fractional(1, 2)
 two = Fractional(2, 1)
 
+
 print(half * two)

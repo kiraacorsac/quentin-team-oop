@@ -32,5 +32,4 @@ class Doggo(Animal):
 
 jake = Doggo(7, "Jake")
 jake.walk()
-jake.
 print(jake.__dict__)
