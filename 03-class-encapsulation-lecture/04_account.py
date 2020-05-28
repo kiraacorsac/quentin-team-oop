@@ -9,14 +9,20 @@ class Account:
     else:
       raise Exception("Not enough money")
 
+  def get_balance(self):
+    return self.__money
+
   def empty_account(self):
     self.__money = 0
+  
+
 
 lacos_account = Account(1000, "ladislav")
 
+# lacos_account.set_balance(100)
+# lacos_account.empty_account()
 lacos_account.set_balance(100)
-lacos_account.empty_account()
-# lacos_account.set_balance(-100)
+print(lacos_account.get_balance())
 
-print(lacos_account)
+
 

@@ -4,7 +4,7 @@ class Account4:
     # private attribute
     # self.__money = 0
     self.remaining_balance = starting_money
-    print(self.remaining_balance)
+    # print(self.remaining_balance)
 
   @property
   def remaining_balance(self):
@@ -29,14 +29,20 @@ class Account4:
     self.remaining_balance -= amount
     self.__money -= 1
 
-
-
 even_better_acc = Account4(5)
-# works as expected
-even_better_acc.remaining_balance -= 1
 print(even_better_acc.remaining_balance)
-# raises exception
-even_better_acc.remaining_balance -= 10
+
+# even_better_acc.remaining_balance = even_better_acc.remaining_balance - 1
+# print(even_better_acc.remaining_balance)
+even_better_acc.remaining_balance -= 1 
+print(even_better_acc.remaining_balance)
+extracted_val = even_better_acc.remaining_balance - 1
+
+# # works as expected
+# even_better_acc.remaining_balance -= 1
+# print(even_better_acc.remaining_balance)
+# # raises exception
+# even_better_acc.remaining_balance -= 10
 
 # works as expected
 # print(even_better_acc.balance)
