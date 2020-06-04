@@ -16,9 +16,11 @@ class Doggo(Animal):
 
 
 regular_animal = Animal("Alice")
+regular_animal.walk()
 regular_animal.make_sound()
 
 rex = Doggo("Rex")
+regular_animal.make_sound()
 rex.make_sound()
 
 ### force rex to behave like regular animal?

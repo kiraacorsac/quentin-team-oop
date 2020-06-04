@@ -13,12 +13,12 @@ class Animal:
 
 class Doggo(Animal):
   def __init__(self, age, doggo_name):
-    # super().__init__(self, doggo_name)
+    super().__init__(doggo_name)
     print('initing a new doggo')
     self.legs = 4
     self.sound = "bark"
     self.age = age
-    self.name = doggo_name
+    # self.name = doggo_name
 
   def get_doggo_attributes(self):
     return self.legs, self.sound, self.age, self.name

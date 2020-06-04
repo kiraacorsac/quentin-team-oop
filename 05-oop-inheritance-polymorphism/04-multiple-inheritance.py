@@ -15,14 +15,12 @@ class LoudCreature:
 
 
 class Animal(WalkingCreature, LoudCreature):
-    def __init__(self):
-        super().__init__()
-
-
-class Doggo(Animal):
     def __init__(self, name):
         super().__init__()
         self.name = name
 
 
-jake = Doggo("Jake")
+
+genericAnimal = Animal("Alfred")
+genericAnimal.walk()
+genericAnimal.make_sound()
