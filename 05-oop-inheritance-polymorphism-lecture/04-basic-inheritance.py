@@ -4,6 +4,9 @@ class Animal:
     print('initing a new animal')
     self.head_count = 0
     self.name = name
+
+  # def __init__(self):
+  #   pass
   
   @property
   def name(self):
@@ -37,16 +40,23 @@ class Doggo(Animal):
     print('initing a Doggo')
     self.legs = legs
     
-
+class Cat(Animal):
+  def __init__(self, name):
+    super().__init__(name)
 
 # animal = Animal("robbo")
 # animal.walk()
 # animal.head_turn()
 
 jake = Doggo("Jake", 4)
-jake.name = "Rex"
+jake.name = "Rexo"
+print(jake.head_count)
+
 
 print(jake.name)
+
+kitty = Cat("Kitty")
+kitty.walk()
 
 # rex.walk()
 # rex.head_turn()
