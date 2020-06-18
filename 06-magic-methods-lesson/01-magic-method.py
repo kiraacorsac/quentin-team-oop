@@ -18,7 +18,6 @@ class Fractional:
   def __repr__(self):
     return f"<Fractional: {self.numer}/{self.denom}>"
 
-  def add(self, other)
 half = Fractional(1, 2)
 three_halfs = Fractional(3, 2)
 
