@@ -2,11 +2,11 @@ class LoudCreature:
   def __init__(self, sound, **kwargs):
     print("LoudCreature start")
     super(LoudCreature, self).__init__(**kwargs)
-    print(sound)
+    self.sound = sound
     print("LoudCreature end")
 
   def make_sound(self):
-    print("Creature making a sound")
+    print(self.sound)
 
 class MovingCreature:
   def __init__(self, speed, leg_number, **kwargs):
@@ -31,15 +31,21 @@ class FlyingCreature:
     pass
 
 class Animal(FlyingCreature, MovingCreature, LoudCreature):
-  def __init__(self, name, feathered, sound, speed, leg_number):
+  def __init__(self, name, anim_feathered, anim_sound, anim_speed, anim_leg_number):
     print("Animal start")
-    super(Animal, self).__init__(feathered=feathered, leg_number=leg_number, 
-                                sound=sound, speed=speed)
+    # super(Animal, self).__init__(feathered=feathered, leg_number=leg_number, 
+    #                             sound=sound, speed=speed)
+    super(Animal, self).__init__(
+      feathered= anim_feathered,
+      leg_number = anim_leg_number,
+      speed = anim_speed,
+      sound = anim_sound
+    )
     # # DONT USE THIS PLEASE!
     # LoudCreature.__init__(self)
     self.name = name
     print("Animal end")
-
+  
   def wag_tail(self):
     print("Animal wagging tail")
 

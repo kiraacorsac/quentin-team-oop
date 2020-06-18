@@ -3,9 +3,6 @@ from functools import total_ordering
 @total_ordering
 class Fractional:
 
-  def toDecimal(self):
-    return self.numerator / self.denominator
-
   def __init__(self, numerator, denominator):
     self.numerator = numerator
     self.denominator = denominator
@@ -25,6 +22,9 @@ class Fractional:
   def __repr__(self):
     #simplification?
     return f"{self.numerator}/{self.denominator}"
+
+  def toDecimal(self):
+    return self.numerator / self.denominator
 
 num1 = Fractional(1, 2)
 num2 = Fractional(2, 1)

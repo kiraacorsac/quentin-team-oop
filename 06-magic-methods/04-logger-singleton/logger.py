@@ -26,7 +26,7 @@ class _Logger(_DocumentWrapper):
 
 class Logger:
   '''
-  This class implements the singleton pattern, along with _Logger
+  This class implements the singleton pattern, together with _Logger
   '''
   __instance = None
 
