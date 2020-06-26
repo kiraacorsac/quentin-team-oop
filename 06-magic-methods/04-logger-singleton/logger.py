@@ -31,10 +31,12 @@ class Logger:
   '''
   __instance = None
 
-  def __new__(cls, logger_type):
+  def __new__(cls):
       if cls.__instance is None:
           cls.__instance = _BasicLogger() 
       return cls.__instance
 
 l = Logger()
+print(isinstance(l, Logger))
+print(isinstance(l, _BasicLogger))
 l += ["Captain's log."]

@@ -50,6 +50,8 @@ print(result.numer, result.denom)
 result *= Fractional(3,1)
 print(result.numer, result.denom)
 
+print(Fractional(1,2))
+
 # print(half + Fractional(2, 3))
 
 print(Fractional(5, 2) <= Fractional(5, 2))
