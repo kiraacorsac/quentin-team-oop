@@ -21,8 +21,9 @@ class SolarSystem(PlanetarySystem):
 
 
 solarSystem = SolarSystem()
-print(solarSystem.name)
+print(solarSystem.name, solarSystem.star)
 solarSystem.planets.append("Mars")
+print(solarSystem.planets)
 
 solarSystem2 = SolarSystem()
 print(solarSystem2.planets)
