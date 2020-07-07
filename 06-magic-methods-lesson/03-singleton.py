@@ -16,14 +16,27 @@ class PlanetarySystem:
 class SolarSystem:
   __instance = None
   
+  #SolarSystem()
   def __new__(cls):
     if(SolarSystem.__instance is None):
       SolarSystem.__instance = PlanetarySystem("Sun")
     return SolarSystem.__instance
 
+  def __init__(self):
+    print("initing")
+
 
 system = SolarSystem()
 system.add_planet("Earth")
+
+# print(system)
+system2 = SolarSystem()
+system2.add_planet("Mars")
+
+print(type(system), type(system2))
+
+print(system.planets)
+print(system2.planets)
 
 # print(system)
 

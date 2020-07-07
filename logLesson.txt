@@ -1,0 +1,8 @@
+t
+e
+s
+t
+test
+test
+New customer with name: Quentin
+New email to adrress: test@example.com
