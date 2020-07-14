@@ -44,7 +44,7 @@ class Account3:
 
   def set_new_balance(self, amount):
     if(amount > 0):
-      self.money = amount
+      self.__money = amount
     else:
       raise Exception("Not enough money")
 

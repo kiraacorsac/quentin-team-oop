@@ -28,6 +28,8 @@ class Doggo(Animal):
 
 jake = Doggo("Jake")
 jake.bark()
+jake.walk()
+print("Doggo's name:", jake.name)
 
 regular_animal = Animal("Alice")
 regular_animal.walk()
