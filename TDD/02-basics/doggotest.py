@@ -23,14 +23,14 @@ class Doggo(unittest.TestCase):
       return
     self.fail("Did not throw exception")
 
-    # with self.assertRaises
-
+  # with self.assertRaises
   def test_doggo_emptyBarkSound_throwsCannotBeEmpty2(self):
     jake = Doggo("Jake")
     with self.assertRaises(Exception):
       jake.sound = ""
     
 
+  # this is not the way! .assertRaises is generally the best.
   @unittest.expectedFailure
   def test_doggo_emptyBarkSound_throwsCannotBeEmpty3(self):
     jake = Doggo("Jake")
@@ -38,7 +38,6 @@ class Doggo(unittest.TestCase):
     self.assertEqual(jake.bark(), "")
 
   
-
 
 if __name__ == "__main__":
   unittest.main()
