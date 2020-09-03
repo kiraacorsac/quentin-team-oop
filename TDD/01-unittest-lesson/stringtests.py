@@ -45,7 +45,7 @@ class StringTest(unittest.TestCase):
   
   def test_count_longSentence_bigEnough(self):
     self.assertGreater(self.long_sentence.count('o'), 4)
-    # self.assertTrue(long_sentence.count('o') > 10)
+    # self.assertTrue(long_sentence.count('o') > 4)
 
   def test_float_similiarNumbers_almostEqual(self):
     self.assertAlmostEqual(0.334, 0.333, 2)
