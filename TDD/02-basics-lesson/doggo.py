@@ -1,3 +1,5 @@
+import re
+
 class Doggo:
   """
   A class representing a guard dog.
@@ -5,7 +7,8 @@ class Doggo:
   name: str 
     Name of the dog
     Cannot be empty (Raises ValueError)
-    Can be only alphanumeric characters (Raises ValueError)
+    Can be only alphabetic characters, dots and spaces (Raises ValueError)
+    Is read only (raises Error)
 
   sound: str
     Sound of the dog barking
@@ -23,4 +26,17 @@ class Doggo:
   def __init__(self, name):
     if name == "":
       raise ValueError("Should not be empty")
-    self.name = name
+
+    # for character in name:
+    #   if re.search("[A-Za-z]", character):
+    #     continue
+    #   else:
+    #     raise ValueError("Should be alphabetic")
+    if re.search("[^A-Za-z. ]", name) :
+      raise ValueError("Should be alphabetic")
+    
+    self.__name = name
+
+  @property
+  def name(self):
+    return self.__name
