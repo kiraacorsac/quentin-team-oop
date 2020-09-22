@@ -23,6 +23,23 @@ class DoggoTest(unittest.TestCase):
     with self.assertRaises(Exception):
       doggo.name = "Something new"
 
+  def test_sound_soundSet_returnSound(self):
+    doggo = Doggo("Jake")
+    doggo.sound = "bark"
+    self.assertEqual(doggo.sound, "bark")
+
+  def test_sound_default_exist(self):
+    doggo = Doggo("Jake")
+    self.assertEqual(doggo.sound, "Bark!")
+
+  def test_sound_empty_raisesError(self):
+    doggo = Doggo("Jake")
+    with self.assertRaises(ValueError):
+      doggo.sound = ""
+
+  def test_doggoNumLegs_default_greaterThanOrEqual0(self):
+    doggo = Doggo("Jake")
+    self.assertGreaterEqual(doggo.num_legs, 0)
 
 
 if __name__ == "__main__":
