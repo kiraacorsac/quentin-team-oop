@@ -18,13 +18,19 @@ class Doggo:
     The number of legs the dog has
     Cannot be less then 0 (Raises ValueError)
   
+  
   bark(): void
     Prints the name of the dog and the sound it makes in the following format:
     '<name> barks: <sound>!'
 
-  growl(): void
-    Prints the name of the dog and the sound it makes in the following format:
-    '<name> growl: <sound>!'
+  woof(): void
+    Prints the name of the dog and woof!:
+    '<name> woofs!'
+
+
+  growl(growl_sound : str): str
+    Return the name of the dog and the growl_sound it makes in the following format:
+    '<name> growl: <growl_sound>!'  
   """
 
   def __init__(self, name, num_legs = 4):
@@ -67,4 +73,11 @@ class Doggo:
       raise ValueError("Has to be non-negative")
     self.__num_legs = new_num_legs
 
-  
+  def bark(self):
+    print(self.name + " barks: " + self.sound)
+    
+  def woof(self):
+    print(self.name + " woofs!")
+
+  def growl(self, growl_sound):
+    return "{} growl: {}".format(self.name, growl_sound)
