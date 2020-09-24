@@ -41,6 +41,12 @@ class DoggoTest(unittest.TestCase):
     doggo = Doggo("Jake")
     self.assertGreaterEqual(doggo.num_legs, 0)
 
+  
+  def test_doggoNumLegs_setLessThan0_raisesError(self):
+    doggo = Doggo("Jake")
+    with self.assertRaises(ValueError):
+      doggo.num_legs = -1
+
 
 if __name__ == "__main__":
   unittest.main()

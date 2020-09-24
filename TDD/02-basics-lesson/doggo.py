@@ -21,6 +21,10 @@ class Doggo:
   bark(): void
     Prints the name of the dog and the sound it makes in the following format:
     '<name> barks: <sound>!'
+
+  growl(): void
+    Prints the name of the dog and the sound it makes in the following format:
+    '<name> growl: <sound>!'
   """
 
   def __init__(self, name, num_legs = 4):
@@ -53,5 +57,14 @@ class Doggo:
       raise ValueError("Sound can not be empty")
     self.__sound = new_sound
 
+  @property
+  def num_legs(self):
+    return self.__num_legs
+  
+  @num_legs.setter
+  def num_legs(self, new_num_legs):
+    if new_num_legs < 0:
+      raise ValueError("Has to be non-negative")
+    self.__num_legs = new_num_legs
 
   
