@@ -1,5 +1,6 @@
 import unittest
 from doggo import Doggo
+from alert import Alert
 from unittest.mock import patch
 
 class DoggoTest(unittest.TestCase):
@@ -50,10 +51,11 @@ class DoggoTest(unittest.TestCase):
     self.simple_doggo.bark()
     print_mock.assert_called_once_with("Jake barks: Bark!")
 
-  @patch.object('builtins.print')
+  @patch('builtins.print')
   def test_growl_default_prints(self, print_mock):
     self.simple_doggo.growl()
     print_mock.assert_called_once_with("Jake: growl!")
+
 
 if __name__ == "__main__":
   unittest.main()

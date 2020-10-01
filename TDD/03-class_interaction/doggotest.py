@@ -1,5 +1,6 @@
 import unittest
 from doggo import Doggo
+from alert import Alert
 from unittest.mock import patch
 
 class DoggoTest(unittest.TestCase):
@@ -50,10 +51,28 @@ class DoggoTest(unittest.TestCase):
     self.simple_doggo.bark()
     print_mock.assert_called_once_with("Jake barks: Bark!")
 
-  @patch.object('builtins.print')
+  @patch('builtins.print')
   def test_growl_default_prints(self, print_mock):
     self.simple_doggo.growl()
     print_mock.assert_called_once_with("Jake: growl!")
+
+  @patch.object(Doggo, 'growl')
+  def test_onAlert_humanOutside1_growls(self, growl_mock):
+    alert = Alert('outside', 'human', 1)
+    self.simple_doggo.on_alert(alert)
+    growl_mock.assert_called_once()
+
+  @patch.object(Doggo, 'bark')
+  def test_onAlert_humanInside1_barks(self, bark_mock):
+    alert = Alert('inside', 'human', 1)
+    self.simple_doggo.on_alert(alert)
+    bark_mock.assert_called_once()
+    
+  @patch.object(Doggo, 'bark')
+  def test_onAlert_catInside1_barks(self, bark_mock):
+    alert = Alert('inside', 'cat', 1)
+    self.simple_doggo.on_alert(alert)
+    self.assertEqual(bark_mock.call_count, 10)
 
 if __name__ == "__main__":
   unittest.main()
