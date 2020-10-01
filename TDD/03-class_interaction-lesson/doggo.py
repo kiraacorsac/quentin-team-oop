@@ -72,7 +72,13 @@ class Doggo:
     self.__num_legs = new_num_legs
 
   def bark(self):
-    print(self.name + " barks: " + self.sound)
+    pass
+    #print(self.name + " barks: " + self.sound)
     
   def growl(self):
     print(self.name + ": growl!")
+
+  def handle_alert(self, alert):
+    if alert.what == 'cat':
+      for i in range(10):
+        self.bark()

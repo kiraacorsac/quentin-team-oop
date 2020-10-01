@@ -56,6 +56,25 @@ class DoggoTest(unittest.TestCase):
     self.simple_doggo.growl()
     print_mock.assert_called_once_with("Jake: growl!")
 
+  @patch.object(Doggo, 'bark')
+  def test_handleAlert_insideCat1_bark10times(self, bark_mock):
+    alert = Alert("inside", "cat", 1)
+    self.simple_doggo.handle_alert(alert)
+    self.assertEqual(bark_mock.call_count, 10)
+
+  @patch.object(Doggo, 'bark')
+  def test_handleAlert_outsideCat1_bark10times(self, bark_mock):
+    alert = Alert("outside", "cat", 1)
+    self.simple_doggo.handle_alert(alert)
+    self.assertEqual(bark_mock.call_count, 10)
+
+  
+  @patch.object(Doggo, 'growl')
+  @unittest.skip("broken")
+  def test_playingAround_handleAlert_outsideCat1_bark10times(self, growl_mock):
+    alert = Alert("outside", "cat", 1)
+    self.simple_doggo.handle_alert(alert)
+    self.assertEqual(growl_mock.call_count, 10)
 
 if __name__ == "__main__":
   unittest.main()
