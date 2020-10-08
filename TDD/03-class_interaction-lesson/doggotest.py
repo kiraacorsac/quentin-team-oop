@@ -7,6 +7,7 @@ class DoggoTest(unittest.TestCase):
 
   def setUp(self):
     self.simple_doggo = Doggo("Jake")
+    
 
   def test_doggoName_nameSet_returnsName(self):
     self.assertEqual(self.simple_doggo.name, "Jake")
@@ -68,13 +69,38 @@ class DoggoTest(unittest.TestCase):
     self.simple_doggo.handle_alert(alert)
     self.assertEqual(bark_mock.call_count, 10)
 
-  
   @patch.object(Doggo, 'growl')
-  @unittest.skip("broken")
-  def test_playingAround_handleAlert_outsideCat1_bark10times(self, growl_mock):
-    alert = Alert("outside", "cat", 1)
+  def test_handleAlert_outsideHuman1_growl(self, growl_mock):
+    alert = Alert("outside", "human", 1)
     self.simple_doggo.handle_alert(alert)
-    self.assertEqual(growl_mock.call_count, 10)
+    growl_mock.assert_called_once()
+
+  @patch.object(Doggo, "bark")
+  def test_handleAlert_insideHuman1_bark(self, bark_mock):
+    alert = Alert("inside", "human", 1)
+    self.simple_doggo.handle_alert(alert)
+    bark_mock.assert_called_once()
+
+
+  def test_getSpeed_threeLegs_15(self):
+    self.simple_doggo.num_legs = 3
+    self.assertEqual(self.simple_doggo.get_speed(), 15)
+
+
+  @patch.object(Doggo, "get_speed")
+  def test_getSpeed_threeLegs_15_alternative(self, getSpeed_mock):
+    getSpeed_mock.return_value = 10
+    self.simple_doggo.run()
+
+
+
+  
+  # @patch.object(Doggo, 'growl')
+  # @unittest.skip("broken")
+  # def test_playingAround_handleAlert_outsideCat1_bark10times(self, growl_mock):
+  #   alert = Alert("outside", "cat", 1)
+  #   self.simple_doggo.handle_alert(alert)
+  #   self.assertEqual(growl_mock.call_count, 10)
 
 if __name__ == "__main__":
   unittest.main()

@@ -29,6 +29,9 @@ class Doggo:
 
   handle_alert(alert : Alert): void
     Handles alert apropriatelly.
+
+  get_speed(): int
+    Speed of the dog, based on number of legs
   """
 
   def __init__(self, name, num_legs = 4):
@@ -72,8 +75,7 @@ class Doggo:
     self.__num_legs = new_num_legs
 
   def bark(self):
-    pass
-    #print(self.name + " barks: " + self.sound)
+    print(self.name + " barks: " + self.sound)
     
   def growl(self):
     print(self.name + ": growl!")
@@ -82,3 +84,15 @@ class Doggo:
     if alert.what == 'cat':
       for i in range(10):
         self.bark()
+    if alert.what == 'human':
+      if alert.where == 'outside':
+        self.growl()
+      elif alert.where == 'inside':
+        self.bark()
+
+  def get_speed(self):
+    return self.num_legs * 5
+
+  def run(self):
+    print(self.name + " is running with speed " + str(self.get_speed()) + " km/h")
+

@@ -11,7 +11,25 @@ class Emailer:
     self.smtp_server = server
     self.source_email = source_email
 
-  def _send_message(self, reciever, subject, content):
+  
+  @property
+  def alert_recipient(self):
+    return self._alert_recipient
+  
+  @alert_recipient.setter
+  def alert_recipient(self, recipient):
+    self._alert_recipient = recipient
+
+  def _format_message(self, author, recipient, subject, content):
+    msg = MIMEText(content)
+    msg['From'] = email.utils.formataddr(('Author',  self.source_email))
+    msg['To'] = email.utils.formataddr(('Recipient', recipient))
+    msg['Subject'] = subject
+
+    return msg.as_string()
+
+
+  def _send_message(self, recipient, subject, content):
     server = smtplib.SMTP(self.smtp_server, self.port)
         # Uncomment folllowing three lines and the ssl import,
         # if you would like to try with real modern servers 
@@ -19,13 +37,10 @@ class Emailer:
         # context = ssl.create_default_context()        # create secure connection context
         # server.starttls(context=context)              # establish secure connection
         # server.login(sender_email, <PASSWORD>)        # log in
-    msg = MIMEText(content)
-    msg['From'] = email.utils.formataddr(('Author',  self.source_email))
-    msg['To'] = email.utils.formataddr(('Recipient', reciever))
-    msg['Subject'] = subject
-
-    server.sendmail(self.source_email, [reciever], msg.as_string())
+    message = self._format_message(self.source_email, recipient, subject, content)
+    server.sendmail(self.source_email, [recipient], message)
     server.quit()
 
   def on_alert(self, alert):
-    pass
+    if alert.level >= 2:
+      self._send_message()
