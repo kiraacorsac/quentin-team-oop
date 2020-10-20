@@ -7,47 +7,52 @@ import datetime
 
 
 class Emailer:
-  '''
-    handle_alert(alert: Alert):
-      Send email, if alert is at least level2
+    '''
+      handle_alert(alert: Alert):
+        Send email, if alert is at least level2
 
-      subject is "Alert"
+        subject is "Alert"
 
-      content is formatted in the following way:
-      What: {what}; Where: {where}; Level: {level} 
-  '''
+        content is formatted in the following way:
+        'You've got an Alert!
+         What: {what}; Where: {where}; Level: {level}' 
+   '''
 
-  def __init__(self, source_email, port = 1025, server = "localhost"):
-    self.port = port 
-    self.smtp_server = server
-    self.source_email = source_email
-  
-  @property
-  def alert_recipient(self):
-    return self._alert_recipient
-  
-  @alert_recipient.setter
-  def alert_recipient(self, recipient):
-    self._alert_recipient = recipient
+    def __init__(self, source_email, port=1025, server="localhost"):
+        self.port = port
+        self.smtp_server = server
+        self.source_email = source_email
 
-  def _format_message(self, author, recipient, subject, content):
-    msg = MIMEText(content)
-    msg['From'] = email.utils.formataddr(('Author',  self.source_email))
-    msg['To'] = email.utils.formataddr(('Recipient', recipient))
-    msg['Subject'] = subject
+    @property
+    def alert_recipient(self):
+        return self._alert_recipient
 
-    return msg.as_string()
+    @alert_recipient.setter
+    def alert_recipient(self, recipient):
+        self._alert_recipient = recipient
 
+    def _format_message(self, author, recipient, subject, content):
+        msg = MIMEText(content)
+        msg['From'] = email.utils.formataddr(('Author',  self.source_email))
+        msg['To'] = email.utils.formataddr(('Recipient', recipient))
+        msg['Subject'] = subject
 
-  def _send_message(self, recipient, subject, content):
-    server = smtplib.SMTP(self.smtp_server, self.port)
+        return msg.as_string()
+
+    def _send_message(self, recipient, subject, content):
+        server = smtplib.SMTP(self.smtp_server, self.port)
         # Uncomment folllowing three lines and the ssl import,
-        # if you would like to try with real modern servers 
+        # if you would like to try with real modern servers
 
         # context = ssl.create_default_context()        # create secure connection context
         # server.starttls(context=context)              # establish secure connection
         # server.login(sender_email, <PASSWORD>)        # log in
-    message = self._format_message(self.source_email, recipient, subject, content)
-    server.sendmail(self.source_email, [recipient], message)
-    server.quit()
+        message = self._format_message(
+            self.source_email, recipient, subject, content)
+        server.sendmail(self.source_email, [recipient], message)
+        server.quit()
 
+    def handle_alert(self, alert):
+        if alert.level >= 2:
+            content = "You've got an Alert!\nWhat: {}; Where: {}; Level: {}".format(alert.what, alert.where, alert.level)
+            self._send_message(self.alert_recipient, "Alert", content)
