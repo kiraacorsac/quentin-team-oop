@@ -1,7 +1,7 @@
 import unittest
 import smtplib
-from .emailer import Emailer
-from .alert import Alert
+from TDD_organized_lesson.AlertHandlers.emailer import Emailer
+from TDD_organized_lesson.alert import Alert
 from unittest.mock import patch
 
 

@@ -1,6 +1,6 @@
 import unittest
-from .doggo import Doggo
-from .alert import Alert
+from TDD_Organized.AlertHandlers.doggo import Doggo
+from TDD_Organized.alert import Alert
 from unittest.mock import patch
 
 class DoggoTest(unittest.TestCase):
