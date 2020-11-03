@@ -1,6 +1,7 @@
 import re
+from TDD_organized_lesson.AlertHandlers.alert_handler import AlertHandler
 
-class Doggo:
+class Doggo(AlertHandler):
   """
   A class representing a guard dog.
 

@@ -2,11 +2,12 @@ import smtplib
 import email.utils
 from email.mime.text import MIMEText
 import datetime
+from TDD_organized_lesson.AlertHandlers.alert_handler import AlertHandler
 
 # import ssl # Used for secure connection
 
 
-class Emailer:
+class Emailer(AlertHandler):
     '''
       handle_alert(alert: Alert):
         Send email, if alert is at least level2

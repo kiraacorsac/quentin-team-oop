@@ -12,6 +12,14 @@ class SecuritySystemTest(unittest.TestCase):
 
     self.assertIn(doggo, security.handlers)
   
+  def test_registerHandler_integer_raisesTypeError(self):
+    security =  SecuritySystem()
+
+    with self.assertRaises(TypeError):
+      security.registerHandler(5)
+
+
+
   @patch.object(Doggo, "handle_alert")
   def test_alertCreated_doggoRegistred_doggoHandleAlert(self, handle_alert_mock):
     security =  SecuritySystem()
@@ -22,3 +30,5 @@ class SecuritySystemTest(unittest.TestCase):
 
     handle_alert_mock.assert_called_once()
     
+
+  
