@@ -2,7 +2,7 @@ class Camera:
   '''
   name: String
   security_system: SecuritySystem
-    - securtiy sytem where the camera is registered 
+    - securtiy system where the camera is registered 
 
   where: [String]
     - specifies where the camera could be pointnig
@@ -13,8 +13,11 @@ class Camera:
   is_connected(): Bool
     - retrurns true if security_system is not none
 
-  detect_movement():
-    - if it does and conditions favorable, call create_alert() on security_system
+  detect_movement(): void
+    - if it does and conditions favorable, call create_alert(), specifing where
+
+  create_alert(): void
+    - pass alert to security system
 
 
   (recording)
