@@ -8,7 +8,7 @@ class SecuritySystem:
   def registerHandler(self, handler):
     if not isinstance(handler, AlertHandler):
       raise TypeError("Alert handler needs to derive from 'AlertHandler' class")
-    
+
     self.handlers.append(handler)
 
   def createAlert(self, where, what, level):

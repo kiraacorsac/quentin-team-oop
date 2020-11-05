@@ -1,8 +1,21 @@
 class Camera:
-  def __init__(self, where, security_system):
-    self.where = where
-    self.security_system = security_system
+  '''
+  name: String
+  security_system: SecuritySystem
+    - securtiy sytem where the camera is registered 
+
+  where: [String]
+    - specifies where the camera could be pointnig
+  
+  night_mode: Bool
+    - camera is able to create alerts during night but not during the day
+
+  is_connected(): Bool
+    - retrurns true if security_system is not none
+
+  detect_movement():
+    - if it does and conditions favorable, call create_alert() on security_system
 
 
-  def create_alert(self, what):
-    self.security_system.create_alert(what, self.where, 2)
+  (recording)
+  '''
