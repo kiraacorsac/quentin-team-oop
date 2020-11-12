@@ -18,4 +18,5 @@ class CameraTest(unittest.TestCase):
         self.assertTrue(self.camera.isConnected())
 
 
-        
+    def test_detectMovement_nightTimeNightMode_createsAlert(self):
+        pass
