@@ -34,7 +34,6 @@ class Doggo(AlertHandler):
   get_speed(): int
     Speed of the dog, based on number of legs
   """
-
   def __init__(self, name, num_legs = 4):
     if name == "":
       raise ValueError("Should not be empty")

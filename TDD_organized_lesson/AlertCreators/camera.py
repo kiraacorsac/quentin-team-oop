@@ -22,3 +22,17 @@ class Camera:
 
   (recording)
   '''
+  def __init__(self, name, where):
+    self.name = name
+    self.where = where
+    self.security_system = None
+
+  
+
+  def is_connected(self):
+    if self.security_system is not None:
+      return True
+    else:
+      return False
+    
+    

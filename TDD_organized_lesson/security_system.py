@@ -4,6 +4,7 @@ from TDD_organized_lesson.AlertHandlers.alert_handler import AlertHandler
 class SecuritySystem:
   def __init__(self):
     self.handlers = []
+    self.creators = []
 
   def registerHandler(self, handler):
     if not isinstance(handler, AlertHandler):
@@ -16,3 +17,7 @@ class SecuritySystem:
 
     for handler in self.handlers:
       handler.handle_alert(alert)
+
+  def registerCreator(self, creator):
+    self.creators.append(creator)
+    creator.security_system = self

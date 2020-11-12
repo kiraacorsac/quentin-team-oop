@@ -1,34 +1,41 @@
 import unittest
-from unittest.mock import patch 
+from unittest.mock import patch, Mock
 from TDD_organized_lesson.AlertHandlers.doggo import Doggo
+from TDD_organized_lesson.AlertCreators.camera import Camera
 from TDD_organized_lesson.security_system import SecuritySystem
 
+
 class SecuritySystemTest(unittest.TestCase):
+  def setUp(self):
+    self.security = SecuritySystem()
+
   def test_registerHandler_doggo_isInHandlers(self):
-    security =  SecuritySystem()
     doggo = Doggo("Jake")
-
-    security.registerHandler(doggo)
-
-    self.assertIn(doggo, security.handlers)
+    self.security.registerHandler(doggo)
+    self.assertIn(doggo, self.security.handlers)
   
   def test_registerHandler_integer_raisesTypeError(self):
-    security =  SecuritySystem()
-
     with self.assertRaises(TypeError):
-      security.registerHandler(5)
+      self.security.registerHandler(5)
 
 
 
   @patch.object(Doggo, "handle_alert")
   def test_alertCreated_doggoRegistred_doggoHandleAlert(self, handle_alert_mock):
-    security =  SecuritySystem()
     doggo = Doggo("Jake")
-    security.registerHandler(doggo)
-
-    security.createAlert("outside", "human", 3)
-
+    self.security.registerHandler(doggo)
+    self.security.createAlert("outside", "human", 3)
     handle_alert_mock.assert_called_once()
     
 
-  
+
+  def test_registerCreator_camera_isInCreator(self):
+    #setup
+    camera_mock = Mock()
+    
+    #act
+    self.security.registerCreator(camera_mock)
+
+    #assert
+    self.assertIn(camera_mock, self.security.creators)
+    self.assertEqual(camera_mock.security_system, self.security)
