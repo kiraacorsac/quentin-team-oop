@@ -17,7 +17,8 @@ class Camera:
     - if it does and conditions favorable, call create_alert(), specifing where
 
   create_alert(): void
-    - pass alert to security system
+    - pass alert to security system, if connected
+    - raise Exception, if not connected
 
 
   (recording)
@@ -34,5 +35,10 @@ class Camera:
       return True
     else:
       return False
+
+  def create_alert(self, where, what, level):
+    self.security_system.createAlert(where, what, level)
+
     
     
+  
