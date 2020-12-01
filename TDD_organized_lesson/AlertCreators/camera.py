@@ -17,6 +17,7 @@ class Camera(AlertCreator):
       - if where is not in self.where (camera is pointing in unknown location), raise Exception
       - if camera is in nightmode, and datetime hour is between 6-22 (day), do nothing
       - if camera is in nightmode, and datetime hour is between 22-6 (night), do create alert, level 3
+      - if camera is NOT in nightmode, just create the alert as usual
 
 
 
