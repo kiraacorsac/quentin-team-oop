@@ -1,5 +1,6 @@
 from TDD_organized_lesson.alert import Alert
 from TDD_organized_lesson.AlertHandlers.alert_handler import AlertHandler
+from TDD_organized_lesson.AlertCreators.alert_creator import AlertCreator
 
 class SecuritySystem:
   def __init__(self):
@@ -19,5 +20,7 @@ class SecuritySystem:
       handler.handle_alert(alert)
 
   def registerCreator(self, creator):
+    if not isinstance(creator, AlertCreator):
+      raise TypeError("Alert creator needs to derive from 'AlertCreator' class")
     self.creators.append(creator)
     creator.security_system = self

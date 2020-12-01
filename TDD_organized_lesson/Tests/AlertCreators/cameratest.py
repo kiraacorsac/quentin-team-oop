@@ -1,5 +1,7 @@
 import unittest
 from unittest.mock import patch
+
+from datetime import datetime
 from TDD_organized_lesson.AlertCreators.camera import Camera
 from TDD_organized_lesson.security_system import SecuritySystem
 
@@ -28,6 +30,11 @@ class CameraTest(unittest.TestCase):
     def test_createAlert_humanOutside2_systemCreateAlert(self, system_create_alert_mock):
         self.connectedCamera.create_alert("outside", "human", 2)
         system_create_alert_mock.assert_called_once()
+
+    @patch.object(Camera, 'create_alert')
+    def test_detectMovement_connected_createAlert(self, create_alert_mock):
+        self.connectedCamera.detect_movement("human", "outside", datetime(2020, 11, 26, 13, 20))
+        create_alert_mock.assert_called_once_with("outside", "human", 2)
 
 
     def test_detectMovement_nightTimeNightMode_createsAlert(self):

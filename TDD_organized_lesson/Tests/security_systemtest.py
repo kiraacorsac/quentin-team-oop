@@ -39,3 +39,7 @@ class SecuritySystemTest(unittest.TestCase):
     #assert
     self.assertIn(camera_mock, self.security.creators)
     self.assertEqual(camera_mock.security_system, self.security)
+
+  def test_registerCreator_integer_raisesTypeError(self):
+    with self.assertRaises(TypeError):
+      self.security.registerCreator(5)

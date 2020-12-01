@@ -1,44 +1,33 @@
-class Camera:
-  '''
-  name: String
-  security_system: SecuritySystem
-    - securtiy system where the camera is registered 
+from TDD_organized_lesson.AlertCreators.alert_creator import AlertCreator
 
-  where: [String]
-    - specifies where the camera could be pointnig
-  
-  night_mode: Bool
-    - camera is able to create alerts during night but not during the day
+class Camera(AlertCreator):
+    '''
+    name: String
+    security_system: SecuritySystem
+      - securtiy system where the camera is registered 
 
-  is_connected(): Bool
-    - retrurns true if security_system is not none
+    where: [String]
+      - specifies where the camera could be pointnig
 
-  detect_movement(): void
-    - if it does and conditions favorable, call create_alert(), specifing where
+    night_mode: Bool
+      - camera is able to create alerts during night but not during the day
 
-  create_alert(): void
-    - pass alert to security system, if connected
-    - raise Exception, if not connected
+    detect_movement(what, where): void
+      - call create_alert(), with what, where, level 2
+      - if where is not in self.where (camera is pointing in unknown location), raise Exception
+      - if camera is in nightmode, and datetime hour is between 6-22 (day), do nothing
+      - if camera is in nightmode, and datetime hour is between 22-6 (night), do create alert, level 3
 
 
-  (recording)
-  '''
-  def __init__(self, name, where):
-    self.name = name
-    self.where = where
-    self.security_system = None
 
-  
+    (recording)
+    '''
 
-  def is_connected(self):
-    if self.security_system is not None:
-      return True
-    else:
-      return False
+    def __init__(self, name, where):
+        super().__init__(name)
+        self.where = where
+        self.night_mode = False
 
-  def create_alert(self, where, what, level):
-    self.security_system.createAlert(where, what, level)
 
-    
-    
-  
+    def detect_movement(self, what, where, datetime):
+        self.create_alert(where, what, 2)
